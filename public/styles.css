@@ -25,25 +25,39 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
-.gallery {
-  padding: 1.7rem;
+.header {
+  padding: 1.6rem;
+}
+
+.main-title h2 {
+  color: #474747;
+  font-size: 3.4rem;
+}
+
+.main-title p {
+  color: #979EA6;
+  font-size: 1.4rem;
+}
+
+main {
+  padding: 1.6rem;
 }
 
 .card {
   border-radius: 10px;
   width: 100%;
   height: 225px;
+  margin-block-end: .8rem;
 }
 
-.massonry {
+.gallery .massonry {
   height: 175px;
   display: flex;
   grid-template-columns: 1fr 1fr;
   overflow-y: scroll;
 }
 
-.massonry .column-1 {
-  background-color: red;
+.gallery .massonry .column-1 {
   width: 100%;
   height: 100%;
   display: grid;
@@ -51,35 +65,30 @@ html, body {
   grid-column: 1/2;
 }
 
-.massonry .column-2 {
+.gallery .massonry .column-2 {
   width: 100%;
-  /*! display: grid; */
-  /*! grid-template-rows: 1fr 1fr; */
   grid-column: 2/3;
-  background: rebeccapurple;
-  /*! height: 100%; */
+  margin-inline-start: .3rem;
 }
 
-.red {
-  background-color: red;
+.image-left {
   height: 175px;
 }
 
-.red:first-child {
+.image-left:first-child {
   border-start-start-radius: 10px;
 }
 
-.blue {
-  background-color: blue;
+.image-up {
   height: 50%;
 }
-.blue:first-child {
+.image-up:first-child {
   border-start-end-radius: 10px;
 }
 
-.green {
-  background-color: green;
-  height: 50%;
+.image-down {
+  margin-block-start: .3rem;
+  height: calc(50% - .3rem);
 }
 
 .card-footer {
@@ -88,4 +97,45 @@ html, body {
   border-end-end-radius: 10px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
   height: 50px;
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem;
+}
+
+.section img {
+  border-radius: 10px;
+}
+
+.section .section-first-image {
+  height: 210px;
+  width: 100%;
+  margin-block-end: 1.8rem ;
+}
+
+
+.section .section-second-image {
+  height: 162px;
+  margin-inline-end: .95rem;
+  margin-block-end: 1.9rem;
+}
+
+.section .section-third-image {
+  height: 352px;
+  margin-inline-start: .95rem;
+  margin-block-end: 1.9rem;
+
+}
+
+.section .section-title {
+  text-transform: capitalize;
+}
+
+.section .massonry {
+  display: flex;
+}
+
+.section .column {
+  width: 100%;
 }

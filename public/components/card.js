@@ -1,21 +1,21 @@
-export const card = () => {
+export const card = (section, images) => {
   const template = `
-    <article class="card">
+    <article class="card" id="${section}">
       <div class="massonry">
         <div class="column-1">
-          <div class="red"></div>
+          <img class="image-left" src="${images.one}" />
         </div>
         <div class="column-2">
-          <div class="blue"></div>
-          <div class="green"></div>
+          <img class="image-up" src="${images.two}" />
+          <img class="image-down" src="${images.three}" />
         </div>
       </div>
       <div class="card-footer">
-        <p>paintings</p>
-        <div>plus</div>
+        <p>${section}</p>
+        <a href="#/${section}">+</a>
       </div>
     </article>
     `;
 
-    return template;
-}
+  return template;
+};

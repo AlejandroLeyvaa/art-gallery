@@ -120,3 +120,5 @@ dist
 
 ./src/config.js/
 .vs
+
+*.sql

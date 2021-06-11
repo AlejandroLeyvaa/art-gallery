@@ -11,20 +11,16 @@
 </head>
 
 <body>
-  <header>
-    <div class="icon">
-      <span>back</span>
-    </div>
-
-    <!-- This should change when a section is selected -->
-    <div class="main-title">
-      <h2>Boards</h2>
-      <p>Following gallries to power up your art careere</p>
-    </div>
-  </header>
   <div id="root">
 
   </div>
+  <footer>
+    <form id="add-image-form">
+      <input type="text" name="image_description" id="description">
+      <input type="file" name="image" accept="image/*" id="add-image">
+      <button class="button send" id="send" type="submit">Enviar</button>
+    </form>
+  </footer>
   <script type="module" src="./index.js"></script>
 </body>
 
