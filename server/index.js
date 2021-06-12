@@ -12,6 +12,6 @@ app.use(cors());
 app.use(express.static('public'));
 app.use('/api/images', gallery);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`http://localhost:${process.env.PORT}`);
 });
