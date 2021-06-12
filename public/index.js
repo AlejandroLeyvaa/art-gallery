@@ -46,7 +46,7 @@ function gallery() {
     if (e.target.tagName === 'A') {
       const imgTags =
         e.target.parentElement.parentElement.querySelectorAll('img');
-      [...imgTags].map((img) => currentImages.push(img.src));
+      [...imgTags].map((img) => currentImages.push(img.id));
     }
   });
 }
@@ -79,6 +79,7 @@ function backgroundImg() {
 }
 
 window.addEventListener('load', async () => {
+  console.log(await getData('/api/images'));
   state = await getData('/api/images');
   if (isHome()) {
     init(images);
