@@ -25,19 +25,20 @@ router.get('/', getList);
 router.post('/', upload.single('image'), insert);
 async function getList(req, res, next) {
   try {
-    const photos = await Controller.getList();
+    console.log(req);
+    const images = await Controller.getList();
 
     fs.readdir(dirName, (err, files) => {
       if(files.length > 0) {
 
         res.status(200).json({
-          data: photos,
-          message: 'Photos listed'
+          data: images,
+          message: 'Images listed'
         })
       } else {
         res.status(200).json({
-          data: 'No image in database, please add some image',
-          message: 'Photos listed'
+          data: 'No images in database, please add some image',
+          message: 'images listed'
         })
       }
     })
