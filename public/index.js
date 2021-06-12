@@ -51,18 +51,21 @@ function gallery() {
   });
 }
 
+function show(e) {
+  if (e.target.tagName === 'IMG') {
+    const modal = document.querySelector('.modal-image');
+    const img = modal.querySelector('img');
+    console.log(modal, img);
+    modal.style.display = 'block';
+    // img.src = window.location + '/assets/images/' + e.target.id;
+    img.src = e.target.id;
+    console.log(e);
+    console.log(e.target);
+  }
+}
 function showImage() {
-  document.addEventListener('dblclick', (e) => {
-    if (e.target.tagName === 'IMG') {
-      const modal = document.querySelector('.modal-image');
-      const img = modal.querySelector('img');
-      console.log(modal, img);
-      modal.style.display = 'block';
-      img.src = e.target.src;
-      console.log(e);
-      console.log(e.target);
-    }
-  });
+  document.addEventListener('dblclick', show);
+  document.addEventListener('touchend', show);
 }
 
 function backgroundImg() {
@@ -70,6 +73,8 @@ function backgroundImg() {
   [...imgs].forEach((item) => {
     const src = item.src;
     item.style.backgroundImage = `url("${src}")`;
+    item.id = item.src;
+    item.src = '';
   });
 }
 
