@@ -49,14 +49,15 @@ async function getList(req, res, next) {
 async function insert(req, res, next) {
   try {
     const { body, file } = await req;
-    const { photo_description } = JSON.parse(JSON.stringify(body));
+    const { image_category } = JSON.parse(JSON.stringify(body));
+    console.log(image_category);
     const data = {
-      photo_description,
       file,
+      image_category
     };
     await Controller.insert(data);
     res.status(200).json({
-      message: 'Photo added',
+      message: 'Image added',
     });
   } catch (err) {
     next(err);

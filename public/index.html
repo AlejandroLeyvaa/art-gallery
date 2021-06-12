@@ -14,12 +14,33 @@
   <div id="root">
 
   </div>
-  <footer>
+
+  <div class="modal-image">
+    <img src="" alt="">
+  </div>
+  <div class="modal-form">
     <form id="add-image-form">
-      <input type="text" name="image_description" id="description">
+      <select name="image_category">
+        <option value="Paintings">Paintings</option>
+        <option value="Illustrations">Illustrations</option>
+        <option value="Typography">Typography</option>
+        <option value="Drawings">Drawings</option>
+      </select>
       <input type="file" name="image" accept="image/*" id="add-image">
       <button class="button send" id="send" type="submit">Enviar</button>
     </form>
+  </div>
+  <footer class="footer">
+    <div class="button-container">
+      <div class="trasparent">
+        <div class="orange-plus-button">
+          +
+        </div>
+      </div>
+    </div>
+    <div class="icons-container">
+
+    </div>
   </footer>
   <script type="module" src="./index.js"></script>
 </body>

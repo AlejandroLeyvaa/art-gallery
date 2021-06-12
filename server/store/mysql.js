@@ -22,7 +22,7 @@ let connection;
 
 function handleConnection() {
 
-  connection = mysql.createConnection(dbConfig);
+  connection = mysql.createConnection(dbConfig || clearDB);
 
   connection.connect((err) => {
     if (err) {

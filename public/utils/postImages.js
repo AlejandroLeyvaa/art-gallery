@@ -1,15 +1,20 @@
 export let blobImage;
 
-const addPhoto = (e) => {
-  console.log(e);
-  e.preventDefault();
-  const image = e.target.files[0];
-  const src = window.URL.createObjectURL(image);
-  blobImage = src;
-};
+const form = document.getElementById('add-image-form');
+const addImageFileInput = document.getElementById('add-image');
+const send = document.getElementById('send');
 
-function post() {
-  fetch('/api/photos', {
+addImageFileInput.addEventListener('change', getBlobImage);
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+  console.log({formData});
+  formData.append('image', blobImage);
+  post(formData);
+});
+
+function post(formData) {
+  fetch('/api/images', {
     method: 'POST',
     body: formData,
   })
@@ -19,15 +24,12 @@ function post() {
     .catch((err) => console.log(err));
 }
 
-export function dashboardbuttons() {
-  const addImageForm = document.getElementById('add-image-form');
-  const addImageFileInput = document.getElementById('add-image');
-  addImageForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // const formData = new FormData(addImageForm);
-    // formData.append('image', blobImage);
+function getBlobImage(e) {
+  e.preventDefault();
+  console.log(e);
+  const image = e.target.files[0];
+  const src = window.URL.createObjectURL(image);
+  blobImage = src;
 
-  });
-  // Button Add Photo
-  addImageFileInput.addEventListener('change', addPhoto);
+  console.log(blobImage);
 }

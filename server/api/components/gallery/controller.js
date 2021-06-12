@@ -1,6 +1,6 @@
 const { nanoid } = require('nanoid');
 
-const TABLE = 'gallery';
+const TABLE = 'images';
 
 function Controller (store) {
   function getList() {
@@ -11,10 +11,8 @@ function Controller (store) {
     const data = await body;
     const photo = {
       image_id: nanoid(),
-      image_name: data.file.filename,
-      image_description: data.photo_description,
-      image_size: data.file.size,
       image_path: data.file.path,
+      image_category: data.image_category
     };
 
     return store.insert(TABLE, photo);
