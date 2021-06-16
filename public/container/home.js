@@ -14,7 +14,7 @@ export const home = (data) => {
     </div>
     <div class="main-title">
       <h2>Boards</h2>
-    <p>Following gallries to power up your art careere</p>
+    <p>Following galleries to power up your art careere</p>
     </div>
     <div id="filters">
     </div>

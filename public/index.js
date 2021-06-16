@@ -48,13 +48,23 @@ function gallery() {
         e.target.parentElement.parentElement.querySelectorAll('.img');
       [...imgTags].map((img) => currentImages.push(img.id));
     }
+
+    if (e.target.nodeName === 'svg') {
+      const imgTags =
+        e.target.parentElement.parentElement.parentElement.querySelectorAll('.img');
+      [...imgTags].map((img) => currentImages.push(img.id));
+    }
+
+    if (e.target.localName === 'path') {
+      const imgTags =
+        e.target.parentElement.parentElement.parentElement.parentElement.querySelectorAll('.img');
+      [...imgTags].map((img) => currentImages.push(img.id));
+    }
   });
 }
 
 function imageModal(event, modal) {
-  // const img = modal.querySelector('img');
   modal.style.display = 'block';
-  // modal.src = event.target.id;
   modal.style.backgroundImage = `url("${event.target.id}")`;
 }
 
@@ -126,7 +136,7 @@ window.addEventListener('load', async () => {
   }
 });
 
-window.addEventListener('hashchange', () => {
+window.addEventListener('hashchange', (e) => {
   if (isHome()) {
     init(images);
     gallery();
