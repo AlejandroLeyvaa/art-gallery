@@ -70,12 +70,18 @@ main {
   margin-block-end: 0.8rem;
 }
 
+.card:last-child {
+  margin: 0 0 112px 0;
+}
+
 .gallery .massonry {
   height: 175px;
   display: flex;
   grid-template-columns: 1fr 1fr;
   overflow-y: scroll;
 }
+
+
 
 .gallery .massonry .column-1 {
   width: 100%;
@@ -296,6 +302,7 @@ main {
   display: block;
   padding: 1.6rem;
 }
+
 
 
 @media screen and (max-width: 374px) {

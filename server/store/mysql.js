@@ -21,8 +21,11 @@ const clearDB = {
 let connection;
 
 function handleConnection() {
-
-  connection = mysql.createConnection(clearDB);
+  if(dbConfig.password === undefined) {
+    connection = mysql.createConnection(clearDB);
+  } else {
+    connection = mysql.createConnection(dbConfig);
+  }
 
   connection.connect((err) => {
     if (err) {
