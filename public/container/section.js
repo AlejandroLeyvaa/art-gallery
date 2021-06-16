@@ -4,7 +4,7 @@ export const section = (images, sect) => {
   template = `
   <main class="section" id="${currentSection}">
     <h2 class="section-title">${currentSection}</h2>
-    <img class="section-first-image" src="${images[0]}" />
+    <div class="img section-first-image" id="${images[0]}"></div>
     <div class="massonry">
     ${images
       .map((src, index) => {
@@ -14,13 +14,13 @@ export const section = (images, sect) => {
           if (count <= 2) {
             return `
             <div class="column column-1">
-              <img class="section-second-image" src="${src}"/>
+              <div class="img section-second-image" id="${src}"></div>
             </div>
           `;
           } else {
             return `
             <div class="column column-2">
-              <img class="section-third-image" src="${src}"/>
+              <div class="img section-third-image" id="${src}"></div>
             </div>
           `;
           }

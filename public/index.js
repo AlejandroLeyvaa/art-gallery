@@ -45,46 +45,72 @@ function gallery() {
   gallery.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
       const imgTags =
-        e.target.parentElement.parentElement.querySelectorAll('img');
+        e.target.parentElement.parentElement.querySelectorAll('.img');
       [...imgTags].map((img) => currentImages.push(img.id));
     }
   });
 }
 
-function show(e) {
-  if (e.target.tagName === 'IMG') {
-    const modal = document.querySelector('.modal-image');
-    const img = modal.querySelector('img');
-    console.log(modal, img);
+function imageModal(event, modal) {
+  const img = modal.querySelector('img');
+  modal.style.display = 'block';
+  img.src = event.target.id;
+}
+
+function formModal(event = null, modal) {
+  if (modal.style.display === 'block') {
+    modal.style.display = 'none';
+  } else {
     modal.style.display = 'block';
-    // img.src = window.location + '/assets/images/' + e.target.id;
-    img.src = e.target.id;
-    console.log(e);
-    console.log(e.target);
   }
 }
+
+function show(event, modal) {
+  if (event.target.className.includes('img')) return imageModal(event, modal);
+  if (event.target.className.includes('orange-plus'))
+    return formModal(event, modal);
+}
+
+function hideModal(modal) {
+  modal.style.display = 'none';
+}
+
+
+document.addEventListener('click', (e) => {
+  if(e.target.className === 'back-modal') {
+    const modal = document.querySelector('.modal-image');
+    hideModal(modal);
+  }
+});
+
 function showImage() {
-  document.addEventListener('dblclick', show);
-  document.addEventListener('touchend', show);
+  const modal = document.querySelector('.modal-image');
+  document.querySelector('main').addEventListener('dblclick', (event) => show(event, modal));
+}
+
+function showForm() {
+  const modal = document.querySelector('.modal-form');
+  modal.style.display = 'none';
+  document
+    .querySelector('.orange-plus-button')
+    .addEventListener('click', (event) => show(event, modal));
 }
 
 function backgroundImg() {
-  const imgs = document.querySelector('.gallery').querySelectorAll('img');
+  let imgs = document.querySelector('main').querySelectorAll('.img');
   [...imgs].forEach((item) => {
-    const src = item.src;
+    const src = item.id;
     item.style.backgroundImage = `url("${src}")`;
-    item.id = item.src;
-    item.src = '';
   });
 }
 
 window.addEventListener('load', async () => {
-  console.log(await getData('/api/images'));
   state = await getData('/api/images');
   if (isHome()) {
     init(images);
     gallery();
     showImage();
+    showForm();
     backgroundImg();
     if (state.data.length > 0) {
       state.data.forEach(async (i) => {
@@ -104,11 +130,11 @@ window.addEventListener('hashchange', () => {
     init(images);
     gallery();
     showImage();
-    putImages();
     backgroundImg();
     currentImages = [];
   } else {
     init(currentImages);
+    backgroundImg();
   }
 });
 

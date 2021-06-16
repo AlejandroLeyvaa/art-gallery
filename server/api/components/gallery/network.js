@@ -25,7 +25,6 @@ router.get('/', getList);
 router.post('/', upload.single('image'), insert);
 async function getList(req, res, next) {
   try {
-    console.log(req);
     const images = await Controller.getList();
 
     fs.readdir(dirName, (err, files) => {
