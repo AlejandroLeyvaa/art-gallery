@@ -52,9 +52,10 @@ function gallery() {
 }
 
 function imageModal(event, modal) {
-  const img = modal.querySelector('img');
+  // const img = modal.querySelector('img');
   modal.style.display = 'block';
-  img.src = event.target.id;
+  // modal.src = event.target.id;
+  modal.style.backgroundImage = `url("${event.target.id}")`;
 }
 
 function formModal(event = null, modal) {
