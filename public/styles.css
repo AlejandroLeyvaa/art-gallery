@@ -295,9 +295,30 @@ main {
 }
 
 
+@media screen and (max-width: 374px) {
+  .rect {
+    display: none;
+  }
+
+  .footer .button-container {
+    bottom: -10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #root {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (min-width: 980px) {
   #root {
     width: 50%;
     margin: 0 auto;
+  }
+
+  .rect {
+    width: 45%;
   }
 }
